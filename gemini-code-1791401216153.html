@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Илья Карпов — Практикующий психолог</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FBF9F5;
+            --card-bg: #FFFFFF;
+            --text-main: #2D2B2A;
+            --text-muted: #6B6765;
+            --accent: #A38671;
+            --accent-hover: #8F725D;
+            --accent-light: #F2ECE4;
+            --border-color: #E8E2DA;
+            --max-width: 1100px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 80px 20px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-content h1 span {
+            color: var(--accent);
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .roles-badges {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .badge {
+            background-color: var(--accent-light);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .hero-image {
+            background-color: var(--accent-light);
+            border-radius: 20px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-weight: 500;
+            border: 1px dashed var(--border-color);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 80px 20px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+            max-width: 600px;
+        }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* PRODUCTS */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .product-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .product-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* CONTACTS */
+        .contacts-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contacts-box h2 {
+            margin-bottom: 15px;
+        }
+
+        .contacts-box p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero, .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-image {
+                height: 250px;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">Илья Карпов</div>
+            <ul class="nav-links">
+                <li><a href="#about">Обо мне</a></li>
+                <li><a href="#products">Инструкции и чек-листы</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Главный экран -->
+    <section class="hero" style="padding-top: 40px; padding-bottom: 40px;">
+        <div class="hero-content">
+            <div class="roles-badges">
+                <span class="badge">Практикующий психолог</span>
+                <span class="badge">Муж и отец</span>
+            </div>
+            <h1>Честный разговор про отношения, <span>жизнь и опоры</span></h1>
+            <p>Помогаю разобраться в себе, остановить эмоциональные качели и вернуть ясность, когда голова ищет оправдания, а тело знает правду.</p>
+            <a href="#products" class="btn">Смотреть материалы</a>
+        </div>
+        <div class="hero-image">
+            <span>Ваше фото здесь</span>
+        </div>
+    </section>
+
+    <!-- Обо мне -->
+    <section id="about">
+        <h2>Обо мне</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>В мире, где всё имеет руководство пользователя — от смартфона до автомобиля, — самая сложная система поставляется без подсказок. Эта система — наша собственная жизнь и наши отношения.</p>
+                <p>Я дипломированный практикующий психолог, муж и отец. Мой подход строится не на сухой теории или абстрактных советах извне, а на поиске внутренней правды, честном контакте с собой и выстраивании здоровых границ.</p>
+                <p>Я сопровождаю людей в кризисах роста, помогаю выйти из тупика эмоциональной зависимости, пересобрать отношения или принять зрелое решение без страха и чувства вины.</p>
+            </div>
+            <div class="hero-image" style="height: 350px;">
+                <span>Фото / Моменты из жизни</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Продуктовая линейка -->
+    <section id="products" style="background-color: #F6F1EC; max-width: 100%; padding: 80px 0;">
+        <div style="max-width: var(--max-width); margin: 0 auto; padding: 0 20px;">
+            <h2>Инструкции и чек-листы</h2>
+            <p class="section-desc">Практические материалы, которые заменяют часы размышлений и помогают навести порядок в мыслях и чувствах.</p>
+            
+            <div class="products-grid">
+                <!-- Продукт 1 -->
+                <div class="product-card">
+                    <div>
+                        <h3>Тест-опросник: «Уходить или остаться?»</h3>
+                        <p>Интерактивный инструмент-инструкция (12 вопросов, 3 минуты). Помогает услышать тело, выйти из слияния, распознать иллюзии и понять: держит ли любовь или страх одиночества и привычка.</p>
+                    </div>
+                    <div class="product-footer">
+                        <span class="price">Полезный гайд</span>
+                        <a href="#contacts" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Получить</a>
+                    </div>
+                </div>
+
+                <!-- Продукт 2 -->
+                <div class="product-card">
+                    <div>
+                        <h3>«Мужчина. Инструкция к жизни»</h3>
+                        <p>Глубокое руководство о биологии, кризисах взросления (от 13 до 40 лет), целях и предназначении. Честный разбор мужской природы для самих мужчин и для женщин, желающих понять партнера.</p>
+                    </div>
+                    <div class="product-footer">
+                        <span class="price">Книга / Инструкция</span>
+                        <a href="#contacts" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Приобрести</a>
+                    </div>
+                </div>
+
+                <!-- Продукт 3 -->
+                <div class="product-card">
+                    <div>
+                        <h3>Терапевтические группы и сопровождение</h3>
+                        <p>Пространство для глубокой работы над собой (программа «Начало» и другие потоки). Безопасная среда для возвращения опор и изменения паттернов поведения.</p>
+                    </div>
+                    <div class="product-footer">
+                        <span class="price">По запросу</span>
+                        <a href="#contacts" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Узнать больше</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contacts">
+        <div class="contacts-box">
+            <h2>Связаться со мной</h2>
+            <p>Если у вас есть вопросы по материалам, вы хотите записаться на консультацию или приобрести инструкции — напишите мне в удобном мессенджере.</p>
+            <div class="social-buttons">
+                <a href="#" class="btn">Telegram / WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <p>&copy; 2026 Илья Карпов. Практикующий психолог. Все права защищены.</p>
+    </footer>
+
+</body>
+</html>
